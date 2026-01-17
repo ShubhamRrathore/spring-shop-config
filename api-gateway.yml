@@ -1,8 +1,7 @@
-
 server:
   port: 8085
 
-
+spring:
   cloud:
     gateway:
       discovery:
