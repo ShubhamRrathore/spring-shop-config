@@ -1,6 +1,9 @@
 server:
   port: 8085
 
+custom:
+  message: Hello from api Server
+
 spring:
   cloud:
     gateway:
