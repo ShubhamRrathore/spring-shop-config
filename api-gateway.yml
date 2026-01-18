@@ -2,7 +2,7 @@ server:
   port: 8085
 
 custom:
-  message: Hello from api Server
+  message: Hello from updated Server
 
 spring:
   cloud:
