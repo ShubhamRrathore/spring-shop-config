@@ -32,3 +32,18 @@ resilience4j:
         failureRateThreshold: 50
         waitDurationInOpenState: 10s
         permittedNumberOfCallsInHalfOpenState: 2
+  ratelimiter:
+    instances:
+      inventoryRateLimiter:
+        limitRefreshPeriod: 5s
+        limitForPeriod: 1
+        timeoutDuration: 1s
+  retry:
+    configs:
+      default:
+        maxRetryAttempts: 3
+        waitDuration: 10s
+    instances:
+      inventoryRetry:
+        baseConfig: default
+        waitDuration: 200ms
