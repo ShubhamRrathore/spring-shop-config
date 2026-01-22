@@ -11,4 +11,24 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: "*"
+    health:
+     circuitbreakers:
+        enabled: true
+   endpoint:
+    health:
+      show-details: always
+
+      
+        
+resilience4j:
+  circuitbreaker:
+    instances:
+      productServiceCB:
+        registerHealthIndicator: false
+        slidingWindowSize: 5
+        slidingWindowType: COUNT_BASED # Use count-based sliding window
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 2
