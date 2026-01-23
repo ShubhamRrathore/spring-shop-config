@@ -37,22 +37,22 @@ resilience4j:
         registerHealthIndicator: false
         slidingWindowSize: 5
         slidingWindowType: COUNT_BASED # Use count-based sliding window
-        minimumNumberOfCalls: 3
+        minimumNumberOfCalls: 5
         failureRateThreshold: 50
         waitDurationInOpenState: 10s
         permittedNumberOfCallsInHalfOpenState: 2
+        recordExceptions:
+          - java.lang.Exception
   ratelimiter:
     instances:
       inventoryRateLimiter:
         limitRefreshPeriod: 5s
         limitForPeriod: 5
         timeoutDuration: 1s
-  retry:
-    configs:
-      default:
-        maxRetryAttempts: 3
-        waitDuration: 10s
+ retry:
     instances:
       inventoryRetry:
-        baseConfig: default
-        waitDuration: 200ms
+        maxRetryAttempts: 3
+        waitDuration: 1s
+        retryExceptions:
+          - java.lang.Exception
