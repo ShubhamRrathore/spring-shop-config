@@ -35,26 +35,26 @@ resilience4j:
     instances:
       productServiceCB:
         registerHealthIndicator: false
-        slidingWindowSize: 5
+        slidingWindowSize: 3
         slidingWindowType: COUNT_BASED
-        minimumNumberOfCalls: 5
+        minimumNumberOfCalls: 3
         failureRateThreshold: 50
-        waitDurationInOpenState: 10s
-        permittedNumberOfCallsInHalfOpenState: 2
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 1
         recordExceptions:
           - java.lang.Exception
 
   ratelimiter:
     instances:
       inventoryRateLimiter:
-        limitForPeriod: 3      # har 10s mein max 3 requests
+        limitForPeriod: 2      # har 10s mein max 2 requests
         limitRefreshPeriod: 10s
-        timeoutDuration: 2s
+        timeoutDuration: 0s
 
   retry:
     instances:
       inventoryRetry:
         maxRetryAttempts: 4    # total 3 retries
-        waitDuration: 1s       # 1s gap between retries
+        waitDuration: 2s       # 1s gap between retries
         retryExceptions:
           - java.lang.Exception
