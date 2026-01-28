@@ -25,6 +25,11 @@ management:
   health:
     circuitbreakers:
       enabled: true
+    ratelimiters:
+      enabled: true
+
+      
+  
 
   endpoint:
     health:
