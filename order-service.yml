@@ -37,6 +37,7 @@ management:
         
 resilience4j:
   circuitbreaker:
+    circuit-breaker-aspect-order: 1 # CB wraps RateLimiter
     instances:
       productServiceCB:
         registerHealthIndicator: false
@@ -51,6 +52,7 @@ resilience4j:
           - io.github.resilience4j.ratelimiter.RequestNotPermitted
 
   ratelimiter:
+    rate-limiter-aspect-order: 2
     instances:
       inventoryRateLimiter:
         limitForPeriod: 2      # har 10s mein max 2 requests
