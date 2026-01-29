@@ -40,7 +40,8 @@ resilience4j:
     circuit-breaker-aspect-order: 1 # CB wraps RateLimiter
     instances:
       productServiceCB:
-        registerHealthIndicator: false
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        registerHealthIndicator: true
         slidingWindowSize: 3
         slidingWindowType: COUNT_BASED
         minimumNumberOfCalls: 3
