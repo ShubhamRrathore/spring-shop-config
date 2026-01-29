@@ -56,8 +56,8 @@ resilience4j:
     instances:
       inventoryRateLimiter:
         limitForPeriod: 2      # har 10s mein max 2 requests
-        limitRefreshPeriod: 10s
-        timeoutDuration: 2s
+        limitRefreshPeriod: 20s
+        timeoutDuration: 0s
 
   retry:
     instances:
