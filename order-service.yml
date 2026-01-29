@@ -48,6 +48,7 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 1
         recordExceptions:
           - java.lang.Exception
+          - io.github.resilience4j.ratelimiter.RequestNotPermitted
 
   ratelimiter:
     instances:
