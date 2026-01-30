@@ -37,7 +37,7 @@ management:
         
 resilience4j:
   circuitbreaker:
-    circuit-breaker-aspect-order: 1 # CB wraps RateLimiter
+    circuit-breaker-aspect-order: 2 # CB wraps RateLimiter
     instances:
       productServiceCB:
         automaticTransitionFromOpenToHalfOpenEnabled: true
@@ -53,7 +53,7 @@ resilience4j:
           - io.github.resilience4j.ratelimiter.RequestNotPermitted
 
   ratelimiter:
-    rate-limiter-aspect-order: 2
+    rate-limiter-aspect-order: 1
     instances:
       inventoryRateLimiter:
         limitForPeriod: 2      # har 10s mein max 2 requests
@@ -61,6 +61,7 @@ resilience4j:
         timeoutDuration: 0s
 
   retry:
+    retry-aspect-order: 3        # Lowest priority (Runs last)
     instances:
       inventoryRetry:
         maxRetryAttempts: 2    # total 3 retries
