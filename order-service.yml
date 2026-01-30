@@ -63,7 +63,7 @@ resilience4j:
   retry:
     instances:
       inventoryRetry:
-        maxRetryAttempts: 4    # total 3 retries
-        waitDuration: 2s       # 1s gap between retries
+        maxRetryAttempts: 2    # total 3 retries
+        waitDuration: 1s       # 1s gap between retries
         retryExceptions:
           - java.lang.Exception
